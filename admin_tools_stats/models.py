@@ -18,7 +18,7 @@ except ImportError:  # Django == 1.7
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from django.apps import apps
-import jsonfield.fields
+from django.contrib.postgres.fields import JSONField
 
 operation = (
     ('Count', 'Count'),
@@ -50,7 +50,7 @@ class DashboardStatsCriteria(models.Model):
     criteria_name = models.CharField(max_length=90, db_index=True,
                                      verbose_name=_('criteria name'),
                                      help_text=_("it needs to be one word unique. Ex. status, yesno"))
-    criteria_fix_mapping = jsonfield.fields.JSONField(
+    criteria_fix_mapping = JSONField(
         null=True, blank=True,
         verbose_name=_("fixed criteria / value"),
         help_text=_("a JSON dictionary of key-value pairs that will be used for the criteria"))
@@ -58,7 +58,7 @@ class DashboardStatsCriteria(models.Model):
         max_length=90, blank=True, null=True,
         verbose_name=_("dynamic criteria field name"),
         help_text=_("ex. for call records - disposition"))
-    criteria_dynamic_mapping = jsonfield.fields.JSONField(
+    criteria_dynamic_mapping = JSONField(
         null=True, blank=True,
         verbose_name=_("dynamic criteria / value"),
         help_text=_(

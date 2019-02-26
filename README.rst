@@ -1,6 +1,7 @@
 Django-admin-tools-stats
 ------------------------
 
+:Fork Description: This fork removes the dependency on django-jsonfield library which causes conflicts with Django's native JSONField
 :Description: Django-admin module to create charts and stats in your dashboard
 :Documentation: http://django-admin-tools-stats.readthedocs.org/en/latest/
 
